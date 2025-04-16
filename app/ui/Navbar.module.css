@@ -16,29 +16,43 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    a { 
+      transition: all 300ms ease;
+      &:active {
+        transform: scale(0.95)
+      }
+      img {padding-left: 0.5rem;}
+      p {padding-right: 1rem;}
+    }; 
   }
-  
+
   .logo {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 500;
+    letter-spacing: 0.15rem;
     color: #fff;
     text-decoration: none;
   }
-  
+
   .navLinks {
     display: flex;
-    gap: 2rem;
+    gap: 3rem;
   }
   
   .navItem {
     color: #fff;
+    padding: 1rem;
+    border-radius: 0.5rem;
     text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-  }
-  
-  .navItem:hover {
-    color: #fff;
+    font-size: 1.25rem;
+    letter-spacing: 0.15rem;
+    transition: all 300ms ease;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+    &:active {
+      transform: scale(0.95)
+    }
   }
   
   .mobileMenuButton {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google"; //font
+import { Poppins } from 'next/font/google';//font
+// import { Inter } from "next/font/google";
 import '@/app/ui/reset.css';
 import '@/app/ui/global.css';
 import Navbar from '@/app/ui/Navbar';
@@ -7,14 +8,17 @@ import Navbar from '@/app/ui/Navbar';
 
 
 //font
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+// export const inter = Inter({
+//   subsets: ['latin'], // Required: specifies character set (latin is sufficient for English)
+//   variable: '--font-inter', // CSS custom property for Tailwind integration
+//   display: 'swap', // Prevents layout shift by using fallback font until loaded
+// });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const poppins = Poppins({
+  weight: ['300', '400', '500', '600', '700'], // Specify weights you need
+  style: ['normal', 'italic'], // Optional: Include italic if needed
+  subsets: ['latin'], // Specify subsets (e.g., 'latin', 'latin-ext')
+  display: 'swap', // Font-display strategy for better UX (swap is recommended)
 });
 
 export const metadata: Metadata = {
@@ -26,7 +30,7 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${poppins} antialiased`}
       >
          <Navbar />
         {children}
