@@ -1,7 +1,6 @@
 import Image from "next/image";
-// import styles from '@/app/ui/home.module.css'; 
-// import { BeakerIcon } from '@heroicons/react/24/outline';
-// import clxs from 'clsx' //used for class switching
+import Link from "next/link";
+import styles from '@/app/ui/Navbar.module.css';
 
 export default function Home() {
   return (
@@ -17,8 +16,11 @@ export default function Home() {
         <h1 className="text-7xl font-bold leading-tight tracking-[.05em]">Whowe</h1>
         <h1 className="text-4xl font-bold leading-tight tracking-[.05em]">Everyone has a story.</h1>
         <div className="sm:text-left w-112 text-center">
-          Whowe is a revolutionary social history platform designed to help you record, share, and even sell your life stories and traditions to current and future generations.{" "}
-        </div>               
+          Whowe is a revolutionary social history platform designed to help you record, share, and even sell your life stories and traditions to current and future generations.
+        </div>
+        <Link href="/discover" className={styles.navItem}>
+          LEAVE YOUR MARK
+        </Link>           
       </main>
  
     
