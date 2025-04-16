@@ -55,7 +55,7 @@ function Navbar() {
             Words
           </Link>
           <Link href="/more" className={styles.navItem} onClick={() => setIsMobileMenuOpen(false)}>
-          <EllipsisVerticalIcon className="h-8 w-8 text-white hover:text-blue-500" />
+          <EllipsisVerticalIcon className="h-8 w-8 text-white" />
           </Link>
         </div>
       </div>
