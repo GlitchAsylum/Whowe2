@@ -1,15 +1,24 @@
 import type { Metadata } from "next";
-import { Poppins } from 'next/font/google';
-import '@/app/ui/reset.css';
-import '@/app/ui/global.css';
-import Navbar from '@/app/ui/Navbar';
 
+import { Montserrat, Poppins } from 'next/font/google';
+import '@/app/ui/global/reset.css';
+import '@/app/ui/global/global.css';
+import Navbar from '@/app/ui/components/navbar/Navbar';
 
 const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700'],
   style: ['normal', 'italic'],
   subsets: ['latin'],
   display: 'swap',
+  variable: "--font-poppins",
+});
+
+const montserrat = Montserrat({
+  weight: ['400', '700'], // Specify weights (e.g., regular and bold)
+  style: ['normal', 'italic'], // Optional: include italic if needed
+  subsets: ['latin'], // Optimize for Latin characters
+  display: 'swap', // Prevent layout shift with font-display: swap
+  variable: '--font-montserrat', // Optional CSS variable for flexibility
 });
 
 export const metadata: Metadata = {
@@ -20,7 +29,7 @@ export const metadata: Metadata = {
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased`}>
+      <body className={`${montserrat.className} antialiased`}>
         <Navbar />
         {children}
       </body>

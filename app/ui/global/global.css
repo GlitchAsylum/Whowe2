@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 
+
 :root {
   --background: #ffffff;
   --foreground: #1D1B11;
@@ -10,8 +11,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-lora);
+  --font-mono: var(--font-lora);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,8 +23,23 @@
 }
 
 body {
+  padding-top: 92px; /* compensatation fixed header */
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: poppins, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.svg-component {
+ shape-rendering: geometricPrecision;
+ transform: translateZ(0);
+}

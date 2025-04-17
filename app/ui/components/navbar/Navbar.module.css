@@ -40,6 +40,9 @@
   }
   
   .navItem {
+    font-family: poppins, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     color: #fff;
     padding: 1rem;
     border-radius: 0.5rem;
