@@ -1,5 +1,3 @@
-// components/Navbar.js
-
 'use client';
 import Image from "next/image";
 import { useState } from 'react';
@@ -7,7 +5,6 @@ import Link from 'next/link';
 import styles from './Navbar.module.css';
 import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
 
-// Make sure the component is properly defined as a function
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -17,44 +14,66 @@ function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      <div className="flex justify-between px-5 py-3">
+      <div className="flex justify-between items-center px-5 py-3 max-w-7xl mx-auto w-full">
         <Link href="/" className={styles.logo}>
-        <div className="flex pr-4 pl-3 py-2 items-center gap-3 rounded-sm text-[#C6E1E7] transition-all duration-300 hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white">
-          <Image
-            src="/whowe_logo_noText.svg"
-            alt="Whowe logo"
-            width={16}
-            height={16}
-            priority
-          />
-          <p>Whowe</p>
-        </div>
+          <div className="flex items-center gap-3 rounded-sm text-[#C6E1E7] transition-all duration-300 hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white">
+            <Image
+              src="/whowe_logo_noText.svg"
+              alt="Whowe logo"
+              width={16}
+              height={16}
+              priority
+            />
+            <p>Whowe</p>
+          </div>
         </Link>
         {/* Hamburger Menu Button (Mobile) */}
-        <button  
+        <button
           className={styles.mobileMenuButton}
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
         >
-          <span className={styles.hamburger}></span>
+          <span className={`${styles.hamburger} ${isMobileMenuOpen ? styles.open : ''}`}></span>
         </button>
 
         {/* Navigation Links */}
-        <div className={`${isMobileMenuOpen ? styles.mobileOpen : ''} flex gap-3 items-center`}>
-          <Link href="/discover" className="text-sm text-[#C6E1E7] tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 hover:text-white active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
+        <div
+          className={`${styles.navLinks} ${isMobileMenuOpen ? styles.mobileOpen : ''} flex gap-x-2 md:gap-x-2 gap-y-4 text-[#C6E1E7] text-sm`} // Added gap-x-4 for desktop, gap-y-4 for mobile
+        >
+          <Link
+            href="/discover"
+            className={`${styles.navLinks} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`} 
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             Discover
           </Link>
-          <Link href="/stories" className="text-sm text-[#C6E1E7] tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 hover:text-white active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link
+            href="/stories"
+            className={`${styles.navLinks} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             Stories
           </Link>
-          <Link href="/library" className="text-sm text-[#C6E1E7] tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 hover:text-white active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link
+            href="/library"
+            className={`${styles.navLinks} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             Library
           </Link>
-          <Link href="/words" className="text-sm text-[#C6E1E7] tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 hover:text-white active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link
+            href="/words"
+            className={`${styles.navLinks} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             Words
           </Link>
-          <Link href="/more" className="text-sm text-[#C6E1E7] tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 hover:text-white active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
-          <EllipsisVerticalIcon className="h-6 w-6 [#C6E1E7]" />
+          <Link
+            href="/more"
+            className={`${styles.navLinks} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <EllipsisVerticalIcon className="h-5 w-5 text-[#C6E1E7]" />
           </Link>
         </div>
       </div>

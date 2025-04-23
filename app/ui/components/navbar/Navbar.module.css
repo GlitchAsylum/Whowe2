@@ -55,10 +55,7 @@
       top: 100%;
       left: 0;
       right: 0;
-      background: #000;
       flex-direction: column;
-      padding: 1rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
   
     .navLinks.mobileOpen {
