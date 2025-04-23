@@ -40,7 +40,7 @@ function Navbar() {
         </button>
 
         {/* Navigation Links */}
-        <div className={`flex gap-3 items-center ${isMobileMenuOpen ? styles.mobileOpen : ''}`}>
+        <div className={`${isMobileMenuOpen ? styles.mobileOpen : ''} flex gap-3 items-center`}>
           <Link href="/discover" className="text-sm text-white tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
             Discover
           </Link>
