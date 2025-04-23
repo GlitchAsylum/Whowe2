@@ -19,7 +19,7 @@ function Navbar() {
     <nav className={styles.navbar}>
       <div className="flex justify-between px-5 py-3">
         <Link href="/" className={styles.logo}>
-        <div className="flex pr-4 pl-3 py-2 items-center gap-3 rounded-sm transition-all duration-300 hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg">
+        <div className="flex pr-4 pl-3 py-2 items-center gap-3 rounded-sm text-[#C6E1E7] transition-all duration-300 hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white">
           <Image
             src="/whowe_logo_noText.svg"
             alt="Whowe logo"
@@ -41,20 +41,20 @@ function Navbar() {
 
         {/* Navigation Links */}
         <div className={`${isMobileMenuOpen ? styles.mobileOpen : ''} flex gap-3 items-center`}>
-          <Link href="/discover" className="text-sm text-white tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link href="/discover" className="text-sm text-[#C6E1E7] tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 hover:text-white active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
             Discover
           </Link>
-          <Link href="/stories" className="text-sm text-white tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link href="/stories" className="text-sm text-[#C6E1E7] tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 hover:text-white active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
             Stories
           </Link>
-          <Link href="/library" className="text-sm text-white tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link href="/library" className="text-sm text-[#C6E1E7] tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 hover:text-white active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
             Library
           </Link>
-          <Link href="/words" className="text-sm text-white tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
+          <Link href="/words" className="text-sm text-[#C6E1E7] tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 hover:text-white active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
             Words
           </Link>
-          <Link href="/more" className="text-sm text-white tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
-          <EllipsisVerticalIcon className="h-6 w-6 text-white" />
+          <Link href="/more" className="text-sm text-[#C6E1E7] tracking-wider px-4 py-2 rounded-sm no-underline transition-all duration-300 hover:bg-white/6 hover:text-white active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
+          <EllipsisVerticalIcon className="h-6 w-6 [#C6E1E7]" />
           </Link>
         </div>
       </div>
