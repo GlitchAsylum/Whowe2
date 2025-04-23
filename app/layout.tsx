@@ -1,24 +1,8 @@
 import type { Metadata } from "next";
-import { Montserrat } from 'next/font/google';
 import '@/app/ui/global/global.css';
 import Navbar from '@/app/ui/components/navbar/Navbar';
 import Footer from '@/app/ui/components/footer/Footer';
-
-// const poppins = Poppins({
-//   weight: ['300', '400', '500', '600', '700'],
-//   style: ['normal', 'italic'],
-//   subsets: ['latin'],
-//   display: 'swap',
-//   variable: "--font-poppins",
-// });
-
-const montserrat = Montserrat({
-  weight: ['400', '700'], 
-  style: ['normal', 'italic'], 
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-montserrat', 
-});
+import { montserrat } from '@/app/lib/fonts';
 
 export const metadata: Metadata = {
   title: "Whowe",
