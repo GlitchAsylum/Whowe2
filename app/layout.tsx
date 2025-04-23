@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from 'next/font/google';
 import '@/app/ui/global/global.css';
 import Navbar from '@/app/ui/components/navbar/Navbar';
-// import Footer from '@/app/ui/components/footer/Footer';
+import Footer from '@/app/ui/components/footer/Footer';
 
 // const poppins = Poppins({
 //   weight: ['300', '400', '500', '600', '700'],
@@ -31,7 +31,7 @@ export default function RootLayout({children,}: Readonly<{children: React.ReactN
       <body className={`${montserrat.className} antialiased`}>
         <Navbar />
         {children}
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
