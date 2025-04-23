@@ -1,4 +1,4 @@
-.container {
+/* .container {
     max-width: 1200px;
     background: var(--background);
     margin: 0 auto;
@@ -15,7 +15,7 @@
       img {padding-left: 0.5rem;}
       p {padding-right: 1rem;}
     }; 
-  }
+  } */
 
   .svg-component {
     shape-rendering: geometricPrecision;
