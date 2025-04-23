@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
-import { Montserrat, Poppins } from 'next/font/google';
-import '@/app/ui/global/reset.css';
+import { Montserrat } from 'next/font/google';
 import '@/app/ui/global/global.css';
 import Navbar from '@/app/ui/components/navbar/Navbar';
 import Footer from '@/app/ui/components/footer/Footer';
 
-const poppins = Poppins({
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
-  subsets: ['latin'],
-  display: 'swap',
-  variable: "--font-poppins",
-});
+// const poppins = Poppins({
+//   weight: ['300', '400', '500', '600', '700'],
+//   style: ['normal', 'italic'],
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: "--font-poppins",
+// });
 
 const montserrat = Montserrat({
   weight: ['400', '700'], 
