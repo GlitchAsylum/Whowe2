@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import '@/app/ui/global/global.css';
-import { montserrat } from '@/app/lib/fonts';
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -9,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children,}: Readonly<{children: React.ReactNode;}>) {
   return (
-      <body className={`${montserrat.className} antialiased`}>
+      <div>
         {children}
-      </body>
+      </div>
   );
 }
