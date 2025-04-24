@@ -9,7 +9,7 @@ interface AboutUsContent {
   mission: string;
   story: string;
   values: string;
-  team: string;
+  team: { member: string }[];
   usp: string;
   audience: string;
   achievements: string;
@@ -26,9 +26,12 @@ const aboutUsContent: AboutUsContent = {
   mission: 'mission',
   story: 'Launched in 2025',
   values: 'human connection',
-  team:'none',
+  team: [
+    { member: 'Trevor Lukanen' },
+    { member: 'Yeng Lukanen' },
+  ],
   usp: 'unique selling point',
-  audience: 'target audience',
+  audience: 'At Whowe, we believe that every person’s life experiences, traditions, and cultural heritage deserve to be preserved and shared. Our mission is to empower individuals of all ages to capture their stories with ease, ensuring that the wisdom and memories of today are cherished for generations to come. While our platform is designed to be accessible and intuitive for everyone, we have placed a special focus on empowering older adults. We understand that technology can sometimes feel overwhelming, which is why we’ve integrated cutting-edge accessibility features and user-friendly tools tailored specifically for seniors. From simplified interfaces to voice-activated recording options and clear, step-by-step guidance, our platform makes it effortless for older generations to document their legacies and share or even sell their traditions with loved ones or the world. Whether it’s a cherished family recipe, a heartfelt life lesson, or a story from decades past, we’re here to help seniors preserve what matters most—easily, confidently, and meaningfully.',
   achievements: 'none',
   contact: {
     email: 'support@whowe.com',
@@ -36,6 +39,7 @@ const aboutUsContent: AboutUsContent = {
     socialMedia: [
       { platform: 'Twitter', url: 'https://twitter.com/whoweapp' },
       { platform: 'LinkedIn', url: 'https://linkedin.com/company/whowe' },
+      { platform: 'Facebook', url: 'https://facebook.com/company/whowe' },
     ],
   },
   buttonText: 'SHARE YOUR STORY',
@@ -48,7 +52,7 @@ export default function AboutUs() {
 
   return (
     <div className="flex min-h-[calc(100vh-16rem)] items-center justify-center">
-      <main className="mb-40 mx-auto flex w-full max-w-7xl flex-col items-center gap-6 text-center px-4">
+      <main className="mb-40 gap-8 mx-auto flex w-full max-w-7xl flex-col items-center gap-6 text-center px-4">
         <Image
           src="/whowe_logo_noText.svg"
           alt="Whowe logo"
@@ -72,8 +76,8 @@ export default function AboutUs() {
             {aboutUsContent.usp}
           </p>
         </div>
-        <div>
-          <h3>Who uses Whowe?</h3>
+        <div className='pt-8'>
+          <h3 className='mb-4'>Who uses Whowe?</h3>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-left text-gray-300 sm:text-lg">
             {aboutUsContent.audience}
           </p>
@@ -93,7 +97,12 @@ export default function AboutUs() {
         <div>
           <h3>Our Team</h3>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-left text-gray-300 sm:text-lg">
-            {aboutUsContent.team}
+            {aboutUsContent.team.map((member, index) => (
+              <span key={index}>
+                {member.member}
+                {index < aboutUsContent.team.length - 1 ? ', ' : ''}
+              </span>
+            ))}
           </p>
         </div>
         <div>
