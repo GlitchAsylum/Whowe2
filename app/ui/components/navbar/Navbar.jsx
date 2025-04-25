@@ -34,9 +34,13 @@ function Navbar() {
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? (
-            <XMarkIcon className="h-6 w-6 text-[#C6E1E7] hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white cursor-pointer" />
+            <div className='px-4 py-2 hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white cursor-pointer'>
+            <XMarkIcon className="h-6 w-6 text-[#C6E1E7]" />
+            </div>
           ) : (
-            <Bars3Icon className="h-6 w-6 text-[#C6E1E7] hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white cursor-pointer" />
+            <div className='px-4 py-2 hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white cursor-pointer'>
+            <Bars3Icon className="h-6 w-6 text-[#C6E1E7]" />
+            </div>
           )}
         </button>
         <div
