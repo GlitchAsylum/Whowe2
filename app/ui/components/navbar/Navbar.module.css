@@ -1,11 +1,11 @@
 .navbar {
-  background: #1a1a1a; /* Adjust to your theme */
+  background: var(--background); 
   width: 100%;
-  position: fixed; /* Fix navbar to the top */
+  position: fixed; 
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; /* Ensure navbar is above other content */
+  z-index: 1000; 
 }
 
 .navLinks {
@@ -15,12 +15,12 @@
     display: none;
     flex-direction: column;
     position: absolute;
-    top: 100%; /* Position below the fixed navbar */
+    top: 100%; 
     left: 0;
     right: 0;
-    background: #1a1a1a; /* Match navbar background */
+    background: var(--background); 
     padding: 1rem;
-    z-index: 999; /* Ensure menu is below navbar but above other content */
+    z-index: 999;
   }
   @media (min-width: 769px) {
     display: flex;

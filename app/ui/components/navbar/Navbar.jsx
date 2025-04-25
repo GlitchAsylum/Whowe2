@@ -17,7 +17,7 @@ function Navbar() {
     <nav className={styles.navbar}>
       <div className="flex justify-between items-center px-5 py-3 max-w-7xl mx-auto w-full">
         <Link href="/" className={styles.logo}>
-          <div className="flex items-center gap-3 rounded-sm text-[#C6E1E7] transition-all duration-300 hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white">
+          <div className="flex items-center gap-3 px-4 py-2 rounded-sm text-[#C6E1E7] transition-all duration-300 hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white">
             <Image
               src="/whowe_logo_noText.svg"
               alt="Whowe logo"
@@ -34,9 +34,9 @@ function Navbar() {
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? (
-            <XMarkIcon className="h-6 w-6 text-[#C6E1E7]" />
+            <XMarkIcon className="h-6 w-6 text-[#C6E1E7] hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white cursor-pointer" />
           ) : (
-            <Bars3Icon className="h-6 w-6 text-[#C6E1E7]" />
+            <Bars3Icon className="h-6 w-6 text-[#C6E1E7] hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white cursor-pointer" />
           )}
         </button>
         <div
