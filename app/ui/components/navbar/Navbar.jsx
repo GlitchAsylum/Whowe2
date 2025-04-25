@@ -15,7 +15,7 @@ function Navbar() {
 
   return (
     <nav className={styles.navbar}>
-      <div className="flex justify-between items-center px-5 py-3 max-w-7xl mx-auto w-full">
+      <div className="flex justify-between items-center px-5 py-3 mx-auto w-full">
         <Link href="/" className={styles.logo}>
           <div className="flex items-center gap-3 px-4 py-2 rounded-sm text-[#C6E1E7] transition-all duration-300 hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white">
             <Image
