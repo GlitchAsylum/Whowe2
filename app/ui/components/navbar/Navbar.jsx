@@ -34,11 +34,11 @@ function Navbar() {
           aria-label="Toggle menu"
         >
           {isMobileMenuOpen ? (
-            <div className='px-4 py-2 hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white cursor-pointer'>
+            <div className='px-4 py-2 rounded-sm hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white cursor-pointer'>
             <XMarkIcon className="h-6 w-6 text-[#C6E1E7]" />
             </div>
           ) : (
-            <div className='px-4 py-2 hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white cursor-pointer'>
+            <div className='px-4 py-2 rounded-sm hover:bg-white/6 hover:backdrop-blur-md hover:shadow-lg hover:text-white cursor-pointer'>
             <Bars3Icon className="h-6 w-6 text-[#C6E1E7]" />
             </div>
           )}

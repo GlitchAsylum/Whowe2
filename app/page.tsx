@@ -42,7 +42,7 @@ export default function Home() {
         <h3 className="text-xl font-semibold tracking-[0.05em] md:text-l">
           {heroContent.subtitle}
         </h3>
-        <p className="mx-auto max-w-2xl text-base leading-relaxed tracking-[0.05em] text-gray-300 sm:text-lg">
+        <p className="mx-auto max-w-2xl text-base px-4 leading-relaxed tracking-[0.05em] text-gray-300 sm:text-lg">
           {heroContent.description}
         </p>
         <Button
