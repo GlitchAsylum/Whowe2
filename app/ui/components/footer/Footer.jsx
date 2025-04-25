@@ -111,13 +111,6 @@ const Footer = () => {
             <span className="absolute inset-0 -z-10 bg-white/10 backdrop-blur-md rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
           </Link>
           <Link
-            href="/services"
-            className="relative text-xs text-[#C6E1E7] hover:text-white transition-all duration-300 group px-2 py-2 active:scale-95"
-          >
-            Services
-            <span className="absolute inset-0 -z-10 bg-white/10 backdrop-blur-md rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-          </Link>
-          <Link
             href="/privacy"
             className="relative text-xs text-[#C6E1E7] hover:text-white transition-all duration-300 group px-2 py-2 active:scale-95"
             rel="nofollow"
