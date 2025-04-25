@@ -1,68 +1,59 @@
-/* components/Navbar.module.css */
 .navbar {
-  background: var(--background);
-  box-shadow: 0 4px 6px 1px rgba(0, 0, 0, 0.1), 0 2px 4px 1px rgba(0, 0, 0, 0.06);
-  position: fixed;
+  background: #1a1a1a; /* Adjust to your theme */
+  width: 100%;
+  position: fixed; /* Fix navbar to the top */
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
-  }
-  
-  .mobileMenuButton {
-    display: none;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-  }
-  
-  .hamburger {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: #fff;
-    position: relative;
-  }
-  
-  .hamburger::before,
-  .hamburger::after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 3px;
-    background: #fff;
-    transition: all 0.3s ease;
-  }
-  
-  .hamburger::before {
-    top: -8px;
-  }
-  
-  .hamburger::after {
-    bottom: -8px;
-  }
-  
-  /* Mobile Styles */
+  z-index: 1000; /* Ensure navbar is above other content */
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
   @media (max-width: 768px) {
-    .mobileMenuButton {
-      display: block;
-    }
-  
-    .navLinks {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      flex-direction: column;
-    }
-  
-    .navLinks.mobileOpen {
-      display: flex;
-    }
-  
-    .navItem {
-      padding: 0.5rem 0;
-    }
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%; /* Position below the fixed navbar */
+    left: 0;
+    right: 0;
+    background: #1a1a1a; /* Match navbar background */
+    padding: 1rem;
+    z-index: 999; /* Ensure menu is below navbar but above other content */
   }
+  @media (min-width: 769px) {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.navLinks.mobileOpen {
+  @media (max-width: 768px) {
+    display: flex; /* Show menu when toggled */
+  }
+}
+
+.mobileMenuButton {
+  display: none;
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+/* Optional: Add shadow to navbar for better visibility */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

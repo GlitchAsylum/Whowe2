@@ -1,14 +1,15 @@
 'use client';
-import Image from "next/image";
+import Image from 'next/image';
 import { useState } from 'react';
 import Link from 'next/link';
 import styles from './Navbar.module.css';
-import { EllipsisVerticalIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon, Bars3Icon, EllipsisVerticalIcon } from '@heroicons/react/24/outline';
 
 function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
+    console.log('Toggling menu, new state:', !isMobileMenuOpen);
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
@@ -27,50 +28,51 @@ function Navbar() {
             <p>Whowe</p>
           </div>
         </Link>
-        {/* Hamburger Menu Button (Mobile) */}
         <button
           className={styles.mobileMenuButton}
           onClick={toggleMobileMenu}
           aria-label="Toggle menu"
         >
-          <span className={`${styles.hamburger} ${isMobileMenuOpen ? styles.open : ''}`}></span>
+          {isMobileMenuOpen ? (
+            <XMarkIcon className="h-6 w-6 text-[#C6E1E7]" />
+          ) : (
+            <Bars3Icon className="h-6 w-6 text-[#C6E1E7]" />
+          )}
         </button>
-
-        {/* Navigation Links */}
         <div
-          className={`${styles.navLinks} ${isMobileMenuOpen ? styles.mobileOpen : ''} flex gap-x-2 md:gap-x-2 gap-y-4 text-[#C6E1E7] text-sm`} // Added gap-x-4 for desktop, gap-y-4 for mobile
+          className={`${styles.navLinks} ${isMobileMenuOpen ? styles.mobileOpen : ''} flex gap-x-2 md:gap-x-2 gap-y-4 text-[#C6E1E7] text-sm`}
         >
           <Link
             href="/discover"
-            className={`${styles.navLinks} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`} 
+            className={`${styles.navLink} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Discover
           </Link>
           <Link
             href="/stories"
-            className={`${styles.navLinks} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`}
+            className={`${styles.navLink} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Stories
           </Link>
           <Link
             href="/library"
-            className={`${styles.navLinks} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`}
+            className={`${styles.navLink} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Library
           </Link>
           <Link
             href="/words"
-            className={`${styles.navLinks} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`}
+            className={`${styles.navLink} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Words
           </Link>
           <Link
             href="/more"
-            className={`${styles.navLinks} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`}
+            className={`${styles.navLink} px-4 py-2 rounded-sm hover:bg-white/6 hover:text-white transition-all duration-300 active:scale-98`}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <EllipsisVerticalIcon className="h-5 w-5 text-[#C6E1E7]" />

@@ -6,6 +6,7 @@ import { useCallback } from 'react';
 // Define types for better type safety
 interface AboutUsContent {
   title: string;
+  subtitle: string;
   mission: string;
   story: string;
   values: string;
@@ -23,16 +24,17 @@ interface AboutUsContent {
 
 const aboutUsContent: AboutUsContent = {
   title: 'About Us',
-  mission: 'mission',
+  subtitle: 'self-actualization and human connection through shared life experience.',
+  mission: 'At Whowe, we believe that every person’s life experiences, traditions, and cultural heritage deserve to be preserved and shared. Our mission is to empower individuals of all ages to capture their stories with ease, ensuring that the wisdom and memories of today are cherished for generations to come. ',
   story: 'Launched in 2025',
   values: 'human connection',
   team: [
     { member: 'Trevor Lukanen' },
     { member: 'Yeng Lukanen' },
   ],
-  usp: 'unique selling point',
-  audience: 'At Whowe, we believe that every person’s life experiences, traditions, and cultural heritage deserve to be preserved and shared. Our mission is to empower individuals of all ages to capture their stories with ease, ensuring that the wisdom and memories of today are cherished for generations to come. While our platform is designed to be accessible and intuitive for everyone, we have placed a special focus on empowering older adults. We understand that technology can sometimes feel overwhelming, which is why we’ve integrated cutting-edge accessibility features and user-friendly tools tailored specifically for seniors. From simplified interfaces to voice-activated recording options and clear, step-by-step guidance, our platform makes it effortless for older generations to document their legacies and share or even sell their traditions with loved ones or the world. Whether it’s a cherished family recipe, a heartfelt life lesson, or a story from decades past, we’re here to help seniors preserve what matters most—easily, confidently, and meaningfully.',
-  achievements: 'none',
+  usp: 'While our platform is designed to be accessible and intuitive for everyone, we have placed a special focus on empowering older adults. We understand that technology can sometimes feel overwhelming, which is why we’ve integrated cutting-edge accessibility features and user-friendly tools tailored specifically for seniors. From simplified interfaces to voice-activated recording options and clear, step-by-step guidance, our platform makes it effortless for older generations to document their legacies and share or even sell their traditions with loved ones or the world. Whether it’s a cherished family recipe, a heartfelt life lesson, or a story from decades past, we’re here to help seniors preserve what matters most—easily, confidently, and meaningfully.',
+  audience: 'Focus on life experience not age',
+  achievements: 'milestones or interactive timeline',
   contact: {
     email: 'support@whowe.com',
     contactForm: '/contact',
@@ -63,6 +65,7 @@ export default function AboutUs() {
           style={{ objectFit: 'contain' }}
         />
         <h1 className="text-4xl font-bold tracking-[0.05em] md:text-5xl">{aboutUsContent.title}</h1>
+        <h2 className="text-l font-bold tracking-[0.05em] md:text-5xl">{aboutUsContent.subtitle}</h2>
 
         <div>
           <h3>Our Mission</h3>
@@ -71,7 +74,7 @@ export default function AboutUs() {
           </p>
         </div>
         <div>
-          <h3>Why Whowe?</h3>
+          <h3>USP</h3>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-left text-gray-300 sm:text-lg">
             {aboutUsContent.usp}
           </p>
@@ -89,6 +92,12 @@ export default function AboutUs() {
           </p>
         </div>
         <div>
+          <h3>Achievements</h3>
+          <p className="mx-auto max-w-2xl text-base leading-relaxed text-left text-gray-300 sm:text-lg">
+            {aboutUsContent.achievements}
+          </p>
+        </div>
+        <div>
           <h3>Our Values</h3>
           <p className="mx-auto max-w-2xl text-base leading-relaxed text-left text-gray-300 sm:text-lg">
             {aboutUsContent.values}
@@ -103,12 +112,6 @@ export default function AboutUs() {
                 {index < aboutUsContent.team.length - 1 ? ', ' : ''}
               </span>
             ))}
-          </p>
-        </div>
-        <div>
-          <h3>Achievements</h3>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-left text-gray-300 sm:text-lg">
-            {aboutUsContent.achievements}
           </p>
         </div>
         <div>
@@ -156,3 +159,14 @@ export default function AboutUs() {
     </div>
   );
 }
+
+//Personal Touch-team photos, handwritten notes/doodles to humanize and foster emotional connection.
+//Gamification - interactive visuals
+//Video introduction compelling story - storyboard it.
+//personable be part of something, brand call to action to be part of something.
+//outreach
+//community relationship betwwen Whowe and individual.
+// don't focus on age but life experience.
+//GSM general social media vs MSM
+//508 compliance and WCAG compliant
+//self-actualization and human connection through shared life experience.
