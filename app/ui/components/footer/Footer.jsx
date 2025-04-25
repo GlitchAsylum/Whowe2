@@ -43,7 +43,7 @@ const Footer = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
       <footer
-        className="fixed bottom-0 left-0 right-0 bg-[var(--background)] text-gray-200 z-50 border-t border-black md:h-14 flex flex-col md:flex-row items-center px-4 py-3 md:py-0"
+        className="fixed bottom-0 left-0 right-0 bg-[var(--background)] text-gray-200 z-50 border-t border-black  flex flex-col md:flex-row items-center px-4 py-3 md:py-0"
         role="contentinfo"
         aria-label="Main footer"
       >
