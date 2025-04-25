@@ -8,7 +8,7 @@ const Footer = () => {
     '@type': 'LocalBusiness',
     name: 'Whowe, Inc.',
     url: 'https://www.whowe.io',
-    logo: 'https://www.logo.io/logo.png',
+    logo: 'https://www.whowe.io/whowe.png',
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '+1-636-793-2071',
@@ -43,12 +43,12 @@ const Footer = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
       <footer
-        className="fixed bottom-0 left-0 right-0 bg-[var(--background)] text-gray-200 z-50 border-t border-black md:h-14 flex flex-col md:flex-row items-center justify-between px-4 py-3 md:py-0"
+        className="fixed bottom-0 left-0 right-0 bg-[var(--background)] text-gray-200 z-50 border-t border-black md:h-14 flex flex-col md:flex-row items-center px-4 py-3 md:py-0"
         role="contentinfo"
         aria-label="Main footer"
       >
         {/* Company Info */}
-        <div className="flex items-center space-x-4 mb-3 md:mb-0">
+        <div className="flex items-center space-x-4 mb-3 md:mb-0 md:flex-1">
           <Image
             src="/whowe_logo_noText.svg"
             alt="Whowe, Inc. Logo"
@@ -57,12 +57,12 @@ const Footer = () => {
             priority
           />
           <p className="text-xs" itemScope itemType="https://schema.org/Organization">
-            <span itemProp="name">Whowe, Inc.</span> © {new Date().getFullYear()} - Empowering Innovation
+            <span itemProp="name">Whowe, Inc.</span> © {new Date().getFullYear()} - Empowering People and Innovation
           </p>
         </div>
 
         {/* Social Media Links */}
-        <div className="flex items-center space-x-4 mb-3 md:mb-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+        <div className="flex items-center justify-center space-x-4 mb-3 md:mb-0 md:flex-1">
           <Link
             href="https://twitter.com/whowe"
             aria-label="Follow us on Twitter"
@@ -99,7 +99,10 @@ const Footer = () => {
         </div>
 
         {/* Navigation Links */}
-        <nav aria-label="Footer navigation" className="flex flex-wrap justify-center items-center space-x-2 md:space-x-4">
+        <nav
+          aria-label="Footer navigation"
+          className="flex flex-wrap justify-center items-center space-x-2 md:space-x-4 md:flex-1"
+        >
           <Link
             href="/about"
             className="relative text-xs text-[#C6E1E7] hover:text-white transition-all duration-300 group px-2 py-2 active:scale-95"
