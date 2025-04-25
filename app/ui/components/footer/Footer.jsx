@@ -101,7 +101,7 @@ const Footer = () => {
         {/* Navigation Links */}
         <nav
           aria-label="Footer navigation"
-          className="flex flex-wrap justify-center items-center space-x-2 md:space-x-4 md:flex-1"
+          className="flex flex-wrap justify-end text-right space-x-2 md:space-x-4 md:flex-1"
         >
           <Link
             href="/about"
