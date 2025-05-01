@@ -65,7 +65,7 @@ export default function AboutUs() {
           style={{ objectFit: 'contain' }}
         />
         <h1 className="text-4xl font-bold tracking-[0.05em] md:text-5xl">{aboutUsContent.title}</h1>
-        <h2 className="text-l font-bold tracking-[0.05em] md:text-5xl">{aboutUsContent.subtitle}</h2>
+        <h2 className="text-l font-bold tracking-[0.05em] md:text-xl">{aboutUsContent.subtitle}</h2>
 
         <div>
           <h3>Our Mission</h3>
