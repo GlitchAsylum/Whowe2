@@ -5,7 +5,7 @@ export default function PrivacyPolicy() {
     <div className="min-h-screen bg-[var{--background}]">
       <Head>
         <title>Privacy Policy | Whowe</title>
-        <meta name="description" content="Privacy Policy for Whowe, a social media platform" />
+        <meta name="description" content="Privacy Policy for Whowe, a social history platform" />
       </Head>
 
       <header className="">
@@ -42,7 +42,7 @@ export default function PrivacyPolicy() {
               <section className="mb-8">
                 <h2 className="text-2xl font-semibold text-white mb-4">3. How We Use Your Information</h2>
                 <p className="text-gray-200">
-                  We use your information to deliver a personalized and engaging social media experience. Specifically, we use it to:
+                  We use your information to deliver a personalized and engaging social history experience. Specifically, we use it to:
                 </p>
                 <ul className="list-disc pl-5 text-gray-200">
                   <li>Facilitate account creation, authentication, and profile customization.</li>
