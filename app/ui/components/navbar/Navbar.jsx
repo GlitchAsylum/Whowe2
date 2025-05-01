@@ -187,7 +187,7 @@ function Navbar() {
                 >
                   <Link
                     href="/contact"
-                    className={`${styles.dropdownItem} block px-4 py-2 text-[#C6E1E7] hover:bg-white/10 hover:text-white transition-all duration-300`}
+                    className={`${styles.dropdownItem} block px-4 py-2 text-[#C6E1E7] hover:bg-white/6 hover:text-white transition-all duration-300`}
                     onClick={() => {
                       setIsDropdownOpen(false);
                       setIsMobileMenuOpen(false);
@@ -196,6 +196,18 @@ function Navbar() {
                     ref={firstDropdownItemRef}
                   >
                     Contact
+                  </Link>
+                  <Link
+                    href="/about"
+                    className={`${styles.dropdownItem} block px-4 py-2 text-[#C6E1E7] hover:bg-white/10 hover:text-white transition-all duration-300`}
+                    onClick={() => {
+                      setIsDropdownOpen(false);
+                      setIsMobileMenuOpen(false);
+                    }}
+                    role="menuitem"
+                    ref={firstDropdownItemRef}
+                  >
+                    About Us
                   </Link>
                 </div>
               )}
