@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
-import { MapPinIcon } from '@heroicons/react/24/outline';
+import { MapPinIcon, ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
 
 interface UserCardProps {
   name: string;
@@ -95,7 +95,7 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
                 className={`w-6 h-6 ${isLiked ? 'fill-red-500' : 'fill-gray-400'}`}
                 viewBox="0 0 24 24"
               >
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                <path d="M12 21.35l-1.45odic-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
               </svg>
             </button>
             <span className="text-gray-200 text-sm">{likes}</span>
@@ -106,17 +106,24 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
           >
             <MapPinIcon className="w-6 h-6 text-gray-200" />
           </button>
-          <button 
-            onClick={(e) => {e.stopPropagation(); handleMenuToggle();}} 
-            className="focus:outline-none"
-          >
-            <svg
-              className="w-6 h-6 fill-gray-200"
-              viewBox="0 0 24 24"
+          <div className="flex items-center gap-1">
+            <button 
+              onClick={(e) => {e.stopPropagation(); handleMenuToggle();}} 
+              className="focus:outline-none"
             >
-              <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-            </svg>
-          </button>
+              <svg
+                className="w-6 h-6 fill-gray-200"
+                viewBox="0 0 24 24"
+              >
+                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
+              </svg>
+            </button>
+            {isExpanded ? (
+              <ChevronUpIcon className="w-6 h-6 text-gray-200" />
+            ) : (
+              <ChevronDownIcon className="w-6 h-6 text-gray-200" />
+            )}
+          </div>
           {isMenuOpen && (
             <div className="absolute right-0 top-8 bg-white shadow-lg rounded-md py-2 w-40 z-10">
               <button
