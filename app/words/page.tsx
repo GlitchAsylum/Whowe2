@@ -1,5 +1,6 @@
 'use client';
 import UserCard from '@/app/ui/components/WordsUserCard';
+import Link from 'next/link';
 
 // Sample data for demonstration
 const users = [
@@ -49,7 +50,14 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[var{--background}] py-10">
       <div className="max-w-5xl mx-auto px-4">
-        <h1 className="text-3xl font-bold text-center mb-8">Words for the World</h1>
+        <h1 className="text-3xl font-bold text-center mb-4">Words for the World</h1>
+        <div className="flex justify-center mb-8">
+          <Link href="/register">
+            <button className="px-6 py-3 bg-white/6 backdrop-blur-md border border-white/12 rounded-sm text-white font-semibold hover:bg-white/12 transition-all duration-300">
+              I HAVE SOMETHING TO SAY
+            </button>
+          </Link>
+        </div>
         <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-1">
           {users.map((user) => (
             <UserCard

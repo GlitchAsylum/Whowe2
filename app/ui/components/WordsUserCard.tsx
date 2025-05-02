@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
-import { MapPinIcon, ChevronUpIcon, ChevronDownIcon } from '@heroicons/react/24/outline';
+import { MapPinIcon, ChevronUpIcon, ChevronDownIcon, HeartIcon, EllipsisVerticalIcon } from '@heroicons/react/24/outline';
 
 interface UserCardProps {
   name: string;
@@ -88,47 +88,39 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
             <span className="text-sm text-gray-200">{`${city}, ${state}, ${country}`}</span>
           </div>
         </div>
-        <div className="flex items-center gap-4 relative" ref={menuRef}>
-          <div className="flex items-center gap-2">
+        <div className="flex items-center gap-6 relative" ref={menuRef}>
+          <div className="flex items-center gap-1">
             <button onClick={(e) => {e.stopPropagation(); handleLike();}} className="focus:outline-none">
-              <svg
-                className={`w-6 h-6 ${isLiked ? 'fill-red-500' : 'fill-gray-400'}`}
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 21.35l-1.45odic-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-              </svg>
+              <HeartIcon 
+                className={`w-6 h-6 ${isLiked ? 'fill-red-500 stroke-red-500' : 'stroke-[#C6E1E7]'}`} 
+              />
             </button>
-            <span className="text-gray-200 text-sm">{likes}</span>
+            <span className="text-gray-200 text-sm min-w-[12px] text-right">{likes}</span>
           </div>
           <button 
             onClick={(e) => {e.stopPropagation(); handleLocation();}} 
             className="focus:outline-none"
           >
-            <MapPinIcon className="w-6 h-6 text-gray-200" />
+            <MapPinIcon className="w-6 h-6 text-[#C6E1E7]" />
           </button>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-6">
             <button 
               onClick={(e) => {e.stopPropagation(); handleMenuToggle();}} 
               className="focus:outline-none"
             >
-              <svg
-                className="w-6 h-6 fill-gray-200"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z" />
-              </svg>
+              <EllipsisVerticalIcon className="w-6 h-6 text-[#C6E1E7]" />
             </button>
             {isExpanded ? (
-              <ChevronUpIcon className="w-6 h-6 text-gray-200" />
+              <ChevronUpIcon className="w-6 h-6 text-[#C6E1E7]" />
             ) : (
-              <ChevronDownIcon className="w-6 h-6 text-gray-200" />
+              <ChevronDownIcon className="w-6 h-6 text-[#C6E1E7]" />
             )}
           </div>
           {isMenuOpen && (
-            <div className="absolute right-0 top-8 bg-white shadow-lg rounded-md py-2 w-40 z-10">
+            <div className="absolute right-0 top-8 bg-white/6 shadow-lg rounded-sm py-2 w-40 z-10">
               <button
                 onClick={(e) => {e.stopPropagation(); handleReportIssue();}}
-                className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                className="block w-full text-left px-4 py-2 text-sm text-[#C6E1E7] hover:bg-white/6 hover:text-white transition-colors duration-300 cursor-pointer"
               >
                 Report Issue
               </button>
