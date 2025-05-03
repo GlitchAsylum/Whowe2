@@ -1,7 +1,7 @@
-'use client';
 import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
-import { MapPinIcon, ChevronUpIcon, ChevronDownIcon, HeartIcon, EllipsisVerticalIcon } from '@heroicons/react/24/outline';
+import { MapPinIcon, ChevronUpIcon, HeartIcon, EllipsisVerticalIcon } from '@heroicons/react/24/outline';
+import Button from './buttons/Button';
 
 interface UserCardProps {
   name: string;
@@ -88,9 +88,9 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
             <span className="text-sm text-gray-200">{`${city}, ${state}, ${country}`}</span>
           </div>
         </div>
-        <div className="flex items-center gap-6 relative" ref={menuRef}>
+        <div className="flex items-center gap-3 relative" ref={menuRef}>
           <div className="flex items-center gap-1">
-            <button onClick={(e) => {e.stopPropagation(); handleLike();}} className="focus:outline-none">
+            <button onClick={(e) => {e.stopPropagation(); handleLike();}} className="hover:bg-white/6 p-3 rounded-[50%] cursor-pointer focus:outline-none">
               <HeartIcon 
                 className={`w-6 h-6 ${isLiked ? 'fill-red-500 stroke-red-500' : 'stroke-[#C6E1E7]'}`} 
               />
@@ -99,25 +99,27 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
           </div>
           <button 
             onClick={(e) => {e.stopPropagation(); handleLocation();}} 
-            className="focus:outline-none"
+            className="cursor-pointer rounded-[50%] p-3 hover:text-white hover:bg-white/6 focus:outline-none"
           >
             <MapPinIcon className="w-6 h-6 text-[#C6E1E7]" />
           </button>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center cursor-pointer rounded-[50%] p-3 hover:text-white hover:bg-white/6">
             <button 
               onClick={(e) => {e.stopPropagation(); handleMenuToggle();}} 
               className="focus:outline-none"
             >
               <EllipsisVerticalIcon className="w-6 h-6 text-[#C6E1E7]" />
             </button>
-            {isExpanded ? (
-              <ChevronUpIcon className="w-6 h-6 text-[#C6E1E7]" />
-            ) : (
-              <ChevronDownIcon className="w-6 h-6 text-[#C6E1E7]" />
-            )}
+          </div>
+          <div className='cursor-pointer rounded-[50%] p-4 hover:bg-white/6'>
+          <ChevronUpIcon 
+              className={`w-6 h-6 text-[#C6E1E7] transition-transform duration-300 ${
+                isExpanded ? 'rotate-180' : ''
+              }`} 
+            />
           </div>
           {isMenuOpen && (
-            <div className="absolute right-0 top-8 bg-white/6 shadow-lg rounded-sm py-2 w-40 z-10">
+            <div className="absolute right-0 top-14 bg-white/6 shadow-lg rounded-sm py-2 w-40 z-10">
               <button
                 onClick={(e) => {e.stopPropagation(); handleReportIssue();}}
                 className="block w-full text-left px-4 py-2 text-sm text-[#C6E1E7] hover:bg-white/6 hover:text-white transition-colors duration-300 cursor-pointer"
@@ -131,12 +133,12 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
       <div 
         ref={contentRef}
         className={`transition-all duration-300 ease-in-out overflow-hidden ${
-          isExpanded ? 'max-h-[500px] p-6' : 'max-h-40 p-6'
+          isExpanded ? 'max-h-[400px] p-6 ' : 'max-h-32 p-6 '
         }`}
       >
         <div 
           className={`h-40 text-gray-200 text-sm ${
-            isExpanded ? 'overflow-y-auto' : 'overflow-hidden text-ellipsis'
+            isExpanded ? 'overflow-y-visible' : 'overflow-hidden text-ellipsis'
           }`}
         >
           {isExpanded ? truncatedFullComment : collapsedComment}

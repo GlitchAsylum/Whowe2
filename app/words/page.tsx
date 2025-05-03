@@ -1,6 +1,7 @@
 'use client';
 import UserCard from '@/app/ui/components/WordsUserCard';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation'; // Import useRouter for navigation
+import Button from '../ui/components/buttons/Button';
 
 // Sample data for demonstration
 const users = [
@@ -10,7 +11,7 @@ const users = [
     city: 'Seattle',
     state: 'WA',
     country: 'USA',
-    comment: 'I absolutely love this platform! The user interface is intuitive, and the features are robust. I’ve been using it for weeks, and it has significantly improved my workflow. Highly recommend to anyone looking for a seamless experience. The community support is also fantastic, always ready to help with any questions. Can’t wait to see what new features are added in the future!',
+    comment: 'The world is thriving with unprecedented progress! Technology connects billions, fostering global collaboration. Renewable energy surges, combating climate change. Medical breakthroughs extend lives, while education empowers millions. Despite challenges, human resilience shines—communities unite, innovate, and uplift. From AI revolutionizing industries to grassroots movements driving equality, optimism fuels a brighter future. We are not perfect, but our collective spirit and ingenuity make this an exciting time to be alive!',
   },
   {
     id: 2,
@@ -18,7 +19,7 @@ const users = [
     city: 'Portland',
     state: 'OR',
     country: 'USA',
-    comment: 'I absolutely love this platform! The user interface is intuitive, and the features are robust. I’ve been using it for weeks, and it has significantly improved my workflow. Highly recommend to anyone looking for a seamless experience. The community support is also fantastic, always ready to help with any questions. Can’t wait to see what new features are added in the future!',
+    comment: 'The world is blooming with hope and progress! Global connectivity through technology unites diverse cultures, sparking innovation. Clean energy advances curb environmental harm, while medical discoveries enhance longevity. Education empowers billions, breaking barriers. Communities rally for justice and equality, proving humanity’s strength. AI and science push boundaries, solving complex issues. Challenges exist, but our shared resolve and creativity drive us toward a vibrant, inclusive future we can all celebrate!',
   },
   {
     id: 3,
@@ -47,16 +48,26 @@ const users = [
 ];
 
 export default function Home() {
+  const router = useRouter(); // Initialize useRouter
+
+  // Define the onClick function for navigation
+  const handleNavigateToRegister = () => {
+    router.push('/register');
+  };
+
   return (
-    <div className="min-h-screen bg-[var{--background}] py-10">
+    <div className="min-h-screen bg-[var{--background}] py-10 pb-40">
       <div className="max-w-5xl mx-auto px-4">
-        <h1 className="text-3xl font-bold text-center mb-4">Words for the World</h1>
+        <h1 className="text-3xl font-medium text-center mb-8">Words for the World</h1>
         <div className="flex justify-center mb-8">
-          <Link href="/register">
-            <button className="px-6 py-3 bg-white/6 backdrop-blur-md border border-white/12 rounded-sm text-white font-semibold hover:bg-white/12 transition-all duration-300">
-              I HAVE SOMETHING TO SAY
-            </button>
-          </Link>
+          <Button
+            onClick={handleNavigateToRegister}
+            className=""
+            variant='glass'
+            size='small'
+          >
+            I HAVE SOMETHING TO SAY
+          </Button>
         </div>
         <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-1">
           {users.map((user) => (
