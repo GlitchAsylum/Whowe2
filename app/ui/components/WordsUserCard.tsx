@@ -87,20 +87,20 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
         </div>
         <div className="flex items-center gap-1 relative" ref={menuRef}>
           <div className="flex items-center gap-1">
-            <button onClick={(e) => {e.stopPropagation(); handleLike();}} className="hover:bg-white/6 p-3 rounded-[50%] cursor-pointer focus:outline-none">
+            <button onClick={(e) => {e.stopPropagation(); handleLike();}} className="hover:bg-white/6 p-3 rounded-[50%] cursor-pointer transition-all duration-300 focus:outline-none">
               <HeartIcon 
-                className={`w-6 h-6 ${isLiked ? 'fill-red-500 stroke-red-500' : 'stroke-[#C6E1E7]'}`} 
+                className={`w-6 h-6 ${isLiked ? 'fill-red-500 stroke-red-500' : 'stroke-[#C6E1E7]'} transition-all duration-300`} 
               />
             </button>
             <span className="text-gray-200 text-sm min-w-[12px] text-right mr-4">{likes}</span>
           </div>
           <button 
             onClick={(e) => {e.stopPropagation(); handleLocation();}} 
-            className="cursor-pointer rounded-[50%] p-3 hover:text-white hover:bg-white/6 focus:outline-none"
+            className="cursor-pointer rounded-[50%] p-3 hover:text-white hover:bg-white/6 transition-all duration-300 focus:outline-none"
           >
             <MapPinIcon className="w-6 h-6 text-[#C6E1E7]" />
           </button>
-          <div className="flex items-center text-[#C6E1E7] cursor-pointer rounded-[50%] p-3 hover:bg-white/6">
+          <div className="flex items-center text-[#C6E1E7] cursor-pointer rounded-[50%] p-3 hover:bg-white/6 transition-all duration-300">
             <button 
               onClick={(e) => {e.stopPropagation(); handleMenuToggle();}} 
               className="focus:outline-none"
@@ -108,7 +108,7 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
               <EllipsisVerticalIcon className="w-6 h-6 text-[#C6E1E7] cursor-pointer" />
             </button>
           </div>
-          <div className='cursor-pointer rounded-[50%] p-3 hover:bg-white/6' onClick={handleToggle}>
+          <div className='cursor-pointer rounded-[50%] p-3 hover:bg-white/6 transition-all duration-300' onClick={handleToggle}>
           <ChevronUpIcon 
               className={`w-6 h-6 text-[#C6E1E7] transition-transform duration-300 ${
                 isExpanded ? 'rotate-180' : ''

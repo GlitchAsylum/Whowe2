@@ -9,7 +9,7 @@ const Button = ({ children, onClick, variant = 'primary', size = 'medium', disab
   };
 
   const sizeStyles = {
-    small: 'px-3 py-1.5 text-xs',
+    small: 'px-3 py-1.75 text-xs',
     medium: 'px-4 py-2 text-sm',
     large: 'px-6 py-3 text-base',
   };
