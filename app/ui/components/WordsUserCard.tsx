@@ -71,11 +71,8 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
 
   return (
     <div className="bg-white/12 rounded-sm shadow-md flex flex-col">
-      <button 
-        onClick={handleToggle}
-        className="flex items-center justify-between p-6 focus:outline-none"
-      >
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between p-6 focus:outline-none">
+        <div className="flex items-center gap-8">
           <Image
             src="/Whowe_logo_notext.svg"
             alt="User icon"
@@ -84,18 +81,18 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
             className="rounded-full"
           />
           <div className="flex flex-col">
-            <h2 className="text-lg font-semibold">{name}</h2>
-            <span className="text-sm text-gray-200">{`${city}, ${state}, ${country}`}</span>
+            <h2 className="text-lg text-left font-semibold">{name}</h2>
+            <span className="text-sm text-left text-gray-200">{`${city}, ${state}, ${country}`}</span>
           </div>
         </div>
-        <div className="flex items-center gap-3 relative" ref={menuRef}>
+        <div className="flex items-center gap-1 relative" ref={menuRef}>
           <div className="flex items-center gap-1">
             <button onClick={(e) => {e.stopPropagation(); handleLike();}} className="hover:bg-white/6 p-3 rounded-[50%] cursor-pointer focus:outline-none">
               <HeartIcon 
                 className={`w-6 h-6 ${isLiked ? 'fill-red-500 stroke-red-500' : 'stroke-[#C6E1E7]'}`} 
               />
             </button>
-            <span className="text-gray-200 text-sm min-w-[12px] text-right">{likes}</span>
+            <span className="text-gray-200 text-sm min-w-[12px] text-right mr-4">{likes}</span>
           </div>
           <button 
             onClick={(e) => {e.stopPropagation(); handleLocation();}} 
@@ -103,15 +100,15 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
           >
             <MapPinIcon className="w-6 h-6 text-[#C6E1E7]" />
           </button>
-          <div className="flex items-center cursor-pointer rounded-[50%] p-3 hover:text-white hover:bg-white/6">
+          <div className="flex items-center text-[#C6E1E7] cursor-pointer rounded-[50%] p-3 hover:bg-white/6">
             <button 
               onClick={(e) => {e.stopPropagation(); handleMenuToggle();}} 
               className="focus:outline-none"
             >
-              <EllipsisVerticalIcon className="w-6 h-6 text-[#C6E1E7]" />
+              <EllipsisVerticalIcon className="w-6 h-6 text-[#C6E1E7] cursor-pointer" />
             </button>
           </div>
-          <div className='cursor-pointer rounded-[50%] p-4 hover:bg-white/6'>
+          <div className='cursor-pointer rounded-[50%] p-3 hover:bg-white/6' onClick={handleToggle}>
           <ChevronUpIcon 
               className={`w-6 h-6 text-[#C6E1E7] transition-transform duration-300 ${
                 isExpanded ? 'rotate-180' : ''
@@ -129,7 +126,7 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
             </div>
           )}
         </div>
-      </button>
+      </div>
       <div 
         ref={contentRef}
         className={`transition-all duration-300 ease-in-out overflow-hidden ${
