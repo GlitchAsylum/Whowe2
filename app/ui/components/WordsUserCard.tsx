@@ -46,6 +46,14 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
     setIsExpanded(!isExpanded);
   };
 
+  // Handle keyboard events for accessibility
+  const handleKeyDown = (event: React.KeyboardEvent, action: () => void) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      action();
+    }
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -58,7 +66,7 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
     };
   }, []);
 
-  // Truncate comment to 500 words for full content
+  // Truncate comment to 500 words for full content (SEO-friendly limit)
   const words = comment.split(' ');
   const truncatedFullComment = words.length > 500 
     ? words.slice(0, 500).join(' ') + '...' 
@@ -70,77 +78,102 @@ export default function UserCard({ name, city, state, country, comment }: UserCa
     : comment;
 
   return (
-    <div className="bg-white/12 rounded-sm shadow-md flex flex-col">
-      <div className="flex items-center justify-between p-6 focus:outline-none">
+    <article className="bg-white/12 rounded-sm shadow-md flex flex-col" role="region" aria-labelledby={`user-${name}`}>
+      <header className="flex items-center justify-between p-6">
         <div className="flex items-center gap-8">
           <Image
             src="/Whowe_logo_notext.svg"
-            alt="User icon"
+            alt={`Profile icon for ${name}`}
             width={40}
             height={40}
             className="rounded-full"
+            aria-hidden="true"
           />
           <div className="flex flex-col">
-            <h2 className="text-lg text-left font-semibold">{name}</h2>
-            <span className="text-sm text-left text-gray-200">{`${city}, ${state}, ${country}`}</span>
+            <h2 id={`user-${name}`} className="text-lg text-left font-semibold">{name}</h2>
+            <address className="text-sm text-left text-gray-200 not-italic" aria-label="User location">
+              {`${city}, ${state}, ${country}`}
+            </address>
           </div>
         </div>
         <div className="flex items-center gap-1 relative" ref={menuRef}>
           <div className="flex items-center gap-1">
-            <button onClick={(e) => {e.stopPropagation(); handleLike();}} className="hover:bg-white/6 p-3 rounded-[50%] cursor-pointer transition-all duration-300 focus:outline-none">
+            <button
+              onClick={(e) => { e.stopPropagation(); handleLike(); }}
+              onKeyDown={(e) => handleKeyDown(e, handleLike)}
+              className="hover:bg-white/6 p-3 rounded-[50%] cursor-pointer transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              aria-label={isLiked ? `Unlike ${name}'s post` : `Like ${name}'s post`}
+              aria-pressed={isLiked}
+            >
               <HeartIcon 
-                className={`w-6 h-6 ${isLiked ? 'fill-red-500 stroke-red-500' : 'stroke-[#C6E1E7]'} transition-all duration-300`} 
+                className={`w-6 h-6 ${isLiked ? 'fill-red-500 stroke-red-500' : 'stroke-[#C6E1E7]'}`} 
               />
             </button>
-            <span className="text-gray-200 text-sm min-w-[12px] text-right mr-4">{likes}</span>
+            <span className="text-gray-200 text-sm min-w-[12px] text-right mr-4" aria-label={`${likes} likes`}>
+              {likes}
+            </span>
           </div>
-          <button 
-            onClick={(e) => {e.stopPropagation(); handleLocation();}} 
-            className="cursor-pointer rounded-[50%] p-3 hover:text-white hover:bg-white/6 transition-all duration-300 focus:outline-none"
+          <button
+            onClick={(e) => { e.stopPropagation(); handleLocation(); }}
+            onKeyDown={(e) => handleKeyDown(e, handleLocation)}
+            className="cursor-pointer rounded-[50%] p-3 hover:text-white hover:bg-white/6 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            aria-label={`View ${name}'s location`}
           >
             <MapPinIcon className="w-6 h-6 text-[#C6E1E7]" />
           </button>
           <div className="flex items-center text-[#C6E1E7] cursor-pointer rounded-[50%] p-3 hover:bg-white/6 transition-all duration-300">
-            <button 
-              onClick={(e) => {e.stopPropagation(); handleMenuToggle();}} 
-              className="focus:outline-none"
+            <button
+              onClick={(e) => { e.stopPropagation(); handleMenuToggle(); }}
+              onKeyDown={(e) => handleKeyDown(e, handleMenuToggle)}
+              className="focus:outline-none focus:ring-2 focus:ring-blue-500"
+              aria-label="Open options menu"
+              aria-expanded={isMenuOpen}
+              aria-haspopup="true"
             >
               <EllipsisVerticalIcon className="w-6 h-6 text-[#C6E1E7] cursor-pointer" />
             </button>
           </div>
-          <div className='cursor-pointer rounded-[50%] p-3 hover:bg-white/6 transition-all duration-300' onClick={handleToggle}>
-          <ChevronUpIcon 
-              className={`w-6 h-6 text-[#C6E1E7] transition-transform duration-300 ${
-                isExpanded ? 'rotate-180' : ''
-              }`} 
+          <button
+            onClick={handleToggle}
+            onKeyDown={(e) => handleKeyDown(e, handleToggle)}
+            className="cursor-pointer rounded-[50%] p-3 hover:bg-white/6 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            aria-label={isExpanded ? `Collapse ${name}'s comment` : `Expand ${name}'s comment`}
+            aria-expanded={isExpanded}
+          >
+            <ChevronUpIcon 
+              className={`w-6 h-6 text-[#C6E1E7] transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} 
             />
-          </div>
+          </button>
           {isMenuOpen && (
-            <div className="absolute right-0 top-14 bg-white/6 shadow-lg rounded-sm py-2 w-40 z-10">
+            <div
+              className="absolute right-0 top-14 bg-white/6 shadow-lg rounded-sm py-2 w-40 z-10"
+              role="menu"
+              aria-label="Options menu"
+            >
               <button
-                onClick={(e) => {e.stopPropagation(); handleReportIssue();}}
-                className="block w-full text-left px-4 py-2 text-sm text-[#C6E1E7] hover:bg-white/6 hover:text-white transition-colors duration-300 cursor-pointer"
+                onClick={(e) => { e.stopPropagation(); handleReportIssue(); }}
+                onKeyDown={(e) => handleKeyDown(e, handleReportIssue)}
+                className="block w-full text-left px-4 py-2 text-sm text-[#C6E1E7] hover:bg-white/6 hover:text-white transition-colors duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
+                role="menuitem"
               >
                 Report Issue
               </button>
             </div>
           )}
         </div>
-      </div>
-      <div 
+      </header>
+      <section
         ref={contentRef}
-        className={`transition-all duration-300 ease-in-out overflow-hidden ${
-          isExpanded ? 'max-h-[400px] p-6 ' : 'max-h-32 p-6 '
-        }`}
+        className={`transition-all duration-300 ease-in-out overflow-hidden ${isExpanded ? 'max-h-[400px] p-6' : 'max-h-32 p-6'}`}
+        aria-hidden={!isExpanded}
       >
-        <div 
-          className={`h-40 text-gray-200 text-sm ${
-            isExpanded ? 'overflow-y-visible' : 'overflow-hidden text-ellipsis'
-          }`}
-        >
+        <p className={`text-gray-200 text-sm ${isExpanded ? 'overflow-y-visible' : 'overflow-hidden text-ellipsis'}`}>
           {isExpanded ? truncatedFullComment : collapsedComment}
-        </div>
-      </div>
-    </div>
+        </p>
+      </section>
+      <footer className="sr-only" aria-hidden="true">
+        End of user card for {name}
+      </footer>
+    </article>
   );
 }
