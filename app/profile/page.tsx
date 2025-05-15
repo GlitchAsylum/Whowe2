@@ -37,90 +37,6 @@ const COUNTRIES: Country[] = [
   { value: 'DEU', label: 'Germany' },
 ];
 
-// Reusable FormField component
-const FormField: React.FC<{
-  id: string;
-  label: string;
-  name: string;
-  value: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  disabled?: boolean;
-  type?: string;
-  placeholder?: string;
-  required?: boolean;
-  options?: Country[];
-}> = React.memo(({ id, label, name, value, onChange, disabled, type = 'text', placeholder, required, options }) => (
-  <div>
-    <label htmlFor={id} className="block text-sm font-medium text-gray-900">
-      {label}
-    </label>
-    {options ? (
-      <select
-        id={id}
-        name={name}
-        value={value}
-        onChange={onChange}
-        disabled={disabled}
-        required={required}
-        aria-required={required}
-        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100"
-      >
-        <option value="">Select a country</option>
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
-    ) : (
-      <input
-        id={id}
-        name={name}
-        type={type}
-        value={value}
-        onChange={onChange}
-        disabled={disabled}
-        placeholder={placeholder}
-        required={required}
-        aria-required={required}
-        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-100"
-      />
-    )}
-  </div>
-));
-
-// Reusable RadioGroup component
-const RadioGroup: React.FC<{
-  name: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  disabled?: boolean;
-}> = React.memo(({ name, value, onChange, disabled }) => (
-  <fieldset>
-    <legend className="block text-sm font-medium text-gray-900">Profile Visibility</legend>
-    <div className="mt-2 flex space-x-4">
-      {['public', 'private'].map((option) => (
-        <div key={option} className="flex items-center">
-          <input
-            id={`${name}-${option}`}
-            name={name}
-            type="radio"
-            value={option}
-            checked={value === option}
-            onChange={onChange}
-            disabled={disabled}
-            className="h-4 w-4 text-blue-600 focus:ring-2 focus:ring-blue-500 border-gray-300 disabled:opacity-50"
-            aria-checked={value === option}
-          />
-          <label htmlFor={`${name}-${option}`} className="ml-2 text-sm text-gray-900 capitalize">
-            {option}
-          </label>
-        </div>
-      ))}
-    </div>
-  </fieldset>
-));
-
 export default function ProfilePage() {
   const [user, setUser] = useState<User>({
     name: 'John Doe',
@@ -175,7 +91,6 @@ export default function ProfilePage() {
       setUser((prev) => ({ ...prev, avatar: previewAvatar }));
       setIsEditingProfile(false);
       setError('');
-      // Send updated profile data to backend
     },
     [user.location.country, previewAvatar]
   );
@@ -183,7 +98,6 @@ export default function ProfilePage() {
   const handleAccountSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
     setIsEditingAccount(false);
-    // Send updated account data to backend
   }, []);
 
   const handleProfileCancel = useCallback(() => {
@@ -197,9 +111,7 @@ export default function ProfilePage() {
   }, []);
 
   const handleUpgradeClick = useCallback(() => {
-    // Placeholder for upgrade functionality (e.g., redirect to payment page)
     alert('Redirect to upgrade page (e.g., /pricing)');
-    // Example: window.location.href = '/pricing';
   }, []);
 
   return (

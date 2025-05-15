@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-
-
 :root {
   --background: #ffffff;
   --foreground: #1D1B11;
@@ -39,30 +37,3 @@ h6 {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.svg-component {
- shape-rendering: geometricPrecision;
- transform: translateZ(0);
-}
-
-select {
-  background-color: rgba(255, 255, 255, 0.06);
-}
-
-select.custom-select {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23C6E1E7' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-position: right 0.75rem center;
-  background-size: 1.5rem;
-  background-repeat: no-repeat;
-}
-
-select option {
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-  padding: 8px;
-}
-
-select option:hover {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-}
