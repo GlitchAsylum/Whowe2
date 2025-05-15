@@ -21,7 +21,7 @@
 }
 
 body {
-  padding-top: 92px; /* compensatation fixed header */
+  padding-top: 92px; /* compensation fixed header */
   background: var(--background);
   color: var(--foreground);
 }

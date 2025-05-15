@@ -2,6 +2,8 @@
 
 import React, { useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
+import FormField from '@/app/ui/components/FormField';
+import RadioGroup from '@/app/ui/components/RadioGroup';
 
 // TypeScript interfaces for type safety
 interface Location {
@@ -18,7 +20,8 @@ interface User {
   memberId: string;
   visibility: 'public' | 'private';
   location: Location;
-  subscriptionPlan: string; // Added subscriptionPlan
+  subscriptionPlan: string;
+  profile: string;
 }
 
 interface Country {
@@ -39,14 +42,15 @@ const COUNTRIES: Country[] = [
 
 export default function ProfilePage() {
   const [user, setUser] = useState<User>({
-    name: 'John Doe',
-    nickname: 'Johnny',
-    avatar: '/default-avatar.png',
-    email: 'john.doe@example.com',
+    name: 'Yeng Lukanen',
+    nickname: 'Brit',
+    avatar: '/YL.jpeg',
+    email: 'y.lukanen@gmail.com',
     memberId: 'M123456789',
     visibility: 'public',
-    location: { city: 'New York', state: 'NY', country: 'USA' },
-    subscriptionPlan: 'Free', // Added Free plan
+    location: { city: 'St. Louis', state: 'Missouri', country: 'USA' },
+    subscriptionPlan: 'Free',
+    profile: 'Software developer with a passion for AI and open-source projects.', // Added profile initial value
   });
   const [isEditingProfile, setIsEditingProfile] = useState(false);
   const [isEditingAccount, setIsEditingAccount] = useState(false);
@@ -67,7 +71,7 @@ export default function ProfilePage() {
       } else {
         setUser((prev) => ({ ...prev, [name]: value }));
       }
-      setError(''); // Clear error on input change
+      setError('');
     },
     []
   );
@@ -115,12 +119,12 @@ export default function ProfilePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-xl shadow-lg">
-        <h1 className="text-center text-3xl font-bold text-gray-900">User Settings</h1>
+    <div className="min-h-screen bg-[var(--background)] flex items-center justify-center py-12 px-4 mb-20 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 bg-white/6 p-8 rounded-sm shadow-lg">
+        <h1 className="text-center text-3xl font-bold text-white">Who I Am</h1>
 
         {/* Tabs */}
-        <nav className="border-b border-gray-200" aria-label="Settings tabs">
+        <nav className="border-b border-gray-600" aria-label="Settings tabs">
           <div className="-mb-px flex space-x-8">
             {['profile', 'account'].map((tab) => (
               <button
@@ -128,8 +132,8 @@ export default function ProfilePage() {
                 onClick={() => setActiveTab(tab as 'profile' | 'account')}
                 className={`${
                   activeTab === tab
-                    ? 'border-blue-600 text-blue-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    ? 'border-white text-white'
+                    : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-200 transition-all duration-300 cursor-pointer'
                 } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500`}
                 aria-current={activeTab === tab ? 'page' : undefined}
               >
@@ -155,7 +159,7 @@ export default function ProfilePage() {
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="absolute bottom-0 right-0 bg-blue-600 text-white rounded-full p-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="absolute bottom-0 right-0 bg-white/12 border border-[#c6e1e7] text-[#c6e1e7] rounded-full p-2 hover:bg-white/24 hover:border-white/6 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
                     aria-label="Change avatar"
                   >
                     <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -180,11 +184,12 @@ export default function ProfilePage() {
             </div>
             {!isEditingProfile && (
               <div className="mt-4 text-center">
-                <p className="text-sm text-gray-900">
+                <p className="text-sm text-white">
                   Location: {user.location.city}
                   {user.location.state && `, ${user.location.state}`}
                   {user.location.country && `, ${user.location.country}`}
                 </p>
+                <p className="text-sm text-white">Bio: {user.profile}</p>
               </div>
             )}
             <form onSubmit={handleProfileSubmit} className="mt-8 space-y-6">
@@ -256,14 +261,14 @@ export default function ProfilePage() {
                     <button
                       type="button"
                       onClick={handleProfileCancel}
-                      className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-900 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="px-4 py-2 rounded-md text-sm font-medium text-[#c6e1e7] transition-color duration-300 hover:bg-white/6 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
                       aria-label="Cancel profile changes"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
-                      className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="px-4 py-2 bg-white/6 text-[#c6e1e7] rounded-sm text-sm font-medium transition-color duration-300 hover:bg-white/12 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
                       aria-label="Save profile changes"
                     >
                       Save
@@ -273,7 +278,7 @@ export default function ProfilePage() {
                   <button
                     type="button"
                     onClick={() => setIsEditingProfile(true)}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="px-4 py-2 bg-white/6 text-white rounded-md text-sm font-medium hover:bg-white/12 transition-color duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
                     aria-label="Edit profile"
                   >
                     Edit Profile
@@ -306,6 +311,14 @@ export default function ProfilePage() {
                 required
               />
               <FormField
+                id="profile"
+                label="Profile"
+                name="profile"
+                value={user.profile}
+                onChange={handleChange}
+                disabled={!isEditingAccount}
+              />
+              <FormField
                 id="password"
                 label="Password"
                 name="password"
@@ -326,7 +339,7 @@ export default function ProfilePage() {
                 <button
                   type="button"
                   onClick={handleUpgradeClick}
-                  className="px-4 py-2 bg-green-600 text-white rounded-md text-sm font-medium hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="px-4 py-2 bg-green-600 text-white rounded-sm text-sm font-medium hover:bg-green-700 transition-color duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer"
                   aria-label="Upgrade subscription plan"
                 >
                   Upgrade
@@ -339,14 +352,14 @@ export default function ProfilePage() {
                   <button
                     type="button"
                     onClick={handleAccountCancel}
-                    className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-900 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="px-4 py-2 border border-white/6 rounded-md text-sm font-medium text-gray-200 bg-transparent hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     aria-label="Cancel account changes"
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="px-4 py-2 bg-white/6 text-white rounded-md text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     aria-label="Save account changes"
                   >
                     Save
@@ -356,7 +369,7 @@ export default function ProfilePage() {
                 <button
                   type="button"
                   onClick={() => setIsEditingAccount(true)}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="px-4 py-2 bg-white/6 text-white rounded-sm text-sm font-medium hover:bg-white/12 transition-color duration-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500"
                   aria-label="Edit account"
                 >
                   Edit Account
