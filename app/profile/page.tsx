@@ -150,22 +150,24 @@ export default function ProfilePage() {
     <div className="min-h-screen bg-[var(--background)] flex items-center justify-center py-12 px-4 mb-12 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white/6 p-8 rounded-sm shadow-lg">
         {/* Header and Edit Buttons */}
-        <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-bold text-white">Who I Am</h1>
-          {!isEditingProfile && !isEditingAccount && (
-            <button
-              type="button"
-              onClick={() => (activeTab === 'profile' ? setIsEditingProfile(true) : setIsEditingAccount(true))}
-              className={`${buttonStyles} ml-4`}
-              aria-label={`Edit ${activeTab}`}
-              aria-expanded={activeTab === 'profile' ? isEditingProfile : isEditingAccount}
-              aria-controls={activeTab === 'profile' ? 'profile-form' : 'account-form'}
-            >
-              <PencilIcon className="h-5 w-5 mr-2" />
-              Edit {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
-            </button>
-          )}
-        </div>
+<div className="flex items-center justify-between">
+  <h1 className="text-3xl font-bold text-white">Who I Am</h1>
+  {isEditingProfile || isEditingAccount ? (
+    <span className="ml-4 text-sm font-medium text-white/80">Editing...</span>
+  ) : (
+    <button
+      type="button"
+      onClick={() => (activeTab === 'profile' ? setIsEditingProfile(true) : setIsEditingAccount(true))}
+      className={`${buttonStyles} ml-4`}
+      aria-label={`Edit ${activeTab}`}
+      aria-expanded={activeTab === 'profile' ? isEditingProfile : isEditingAccount}
+      aria-controls={activeTab === 'profile' ? 'profile-form' : 'account-form'}
+    >
+      <PencilIcon className="h-5 w-5 mr-2" />
+      Edit {activeTab.charAt(0).toUpperCase() + activeTab.slice(1)}
+    </button>
+  )}
+</div>
 
         {/* Tabs */}
         <nav className="border-b border-gray-600" aria-label="Settings tabs">
@@ -177,7 +179,7 @@ export default function ProfilePage() {
                 className={`${
                   activeTab === tab
                     ? 'border-white text-white'
-                    : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-200'
+                    : 'border-transparent text-gray-400 hover:text-gray-200 hover:border-gray-200 cursor-pointer'
                 } whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300`}
                 aria-current={activeTab === tab ? 'page' : undefined}
                 aria-label={`Switch to ${tab} tab`}
@@ -227,7 +229,7 @@ export default function ProfilePage() {
                 />
               </div>
             </div>
-            <div className="mt-4 text-center">
+            <div className="mt-5 space-y-5 text-center">
               {!isEditingProfile && (
                 <>
                   <button
@@ -241,7 +243,7 @@ export default function ProfilePage() {
                     {user.location.state && `, ${user.location.state}`}
                     {user.location.country && `, ${user.location.country}`}
                   </button>
-                  <blockquote className="text-sm text-white mt-2 pl-4 border-l-4 border-white/50 text-left italic bg-white/6 py-2">
+                  <blockquote className="rounded-sm shadow-sm text-sm text-white mt-2 pl-4 border-l-4 border-white/12 text-left italic bg-white/6 py-2">
                     {user.profile}
                   </blockquote>
                 </>
@@ -249,7 +251,7 @@ export default function ProfilePage() {
               {isEditingProfile && (
                 <div className="mt-2">
                   <label htmlFor="profile" className="block text-sm font-medium text-white text-left">
-                    Bio
+                    Inspiration Quote
                   </label>
                   <textarea
                     id="profile"
@@ -297,7 +299,7 @@ export default function ProfilePage() {
                   value={user.name}
                   onChange={handleChange}
                   required
-                  ref={firstNameInputRef}
+                  // ref={firstNameInputRef}
                   aria-describedby={error ? 'profile-error' : undefined}
                   aria-invalid={error ? 'true' : undefined}
                 />
@@ -387,14 +389,7 @@ export default function ProfilePage() {
                   value={user.email}
                   onChange={handleChange}
                   required
-                  ref={emailInputRef}
-                />
-                <FormField
-                  id="profile"
-                  label="Profile"
-                  name="profile"
-                  value={user.profile}
-                  onChange={handleChange}
+                  // ref={emailInputRef}
                 />
                 <FormField
                   id="password"
@@ -405,25 +400,23 @@ export default function ProfilePage() {
                   onChange={handleChange}
                   placeholder={isEditingAccount ? 'Enter new password' : '••••••••'}
                 />
-                <div className="flex items-center space-x-2">
-                  <div className="flex-1">
-                    <FormField
-                      id="subscriptionPlan"
-                      label="Subscription Plan"
-                      name="subscriptionPlan"
-                      value={user.subscriptionPlan}
-                      disabled
-                    />
-                  </div>
-                  <button
-                    type="button"
-                    onClick={handleUpgradeClick}
-                    className="px-4 py-2 bg-green-600 text-white rounded-sm text-sm font-medium hover:bg-green-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer"
-                    aria-label="Upgrade subscription plan"
-                  >
-                    Upgrade
-                  </button>
+                <div className="flex-1">
+                  <FormField
+                    id="subscriptionPlan"
+                    label="Subscription Plan"
+                    name="subscriptionPlan"
+                    value={user.subscriptionPlan}
+                    disabled
+                  />
                 </div>
+                <button
+                  type="button"
+                  onClick={handleUpgradeClick}
+                  className="w-full px-4 py-2 bg-green-600 text-white rounded-sm text-sm font-medium hover:bg-green-700 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 cursor-pointer"
+                  aria-label="Upgrade subscription plan"
+                >
+                  Upgrade
+                </button>
               </fieldset>
               <div className="flex justify-end space-x-3">
                 {isEditingAccount && (
