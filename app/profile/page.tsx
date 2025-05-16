@@ -3,7 +3,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import FormField from '@/app/ui/components/FormField';
-import RadioGroup from '@/app/ui/components/RadioGroup';
 
 // TypeScript interfaces for type safety
 interface Location {
@@ -247,12 +246,6 @@ export default function ProfilePage() {
                   disabled={!isEditingProfile}
                   required
                   options={COUNTRIES}
-                />
-                <RadioGroup
-                  name="visibility"
-                  value={user.visibility}
-                  onChange={handleChange}
-                  disabled={!isEditingProfile}
                 />
               </div>
               <div className="flex justify-end space-x-3">
