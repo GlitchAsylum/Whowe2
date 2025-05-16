@@ -96,7 +96,6 @@ export default function ProfilePage() {
       }
       setUser((prev) => ({ ...prev, avatar: previewAvatar }));
       setIsEditingProfile(false);
-      setError('');
     },
     [user.location.country, previewAvatar]
   );
