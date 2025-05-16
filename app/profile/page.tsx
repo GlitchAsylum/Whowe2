@@ -2,9 +2,11 @@
 
 import React, { useState, useRef, useCallback } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation'; // Import useRouter for navigation
 import FormField from '@/app/ui/components/FormField';
+import { PencilIcon, MapPinIcon } from '@heroicons/react/24/outline'; // Add MapPinIcon
 
-// TypeScript interfaces for type safety
+// TypeScript interfaces (unchanged)
 interface Location {
   city: string;
   state: string;
@@ -28,7 +30,7 @@ interface Country {
   label: string;
 }
 
-// Static country list (subset for demo; use library like `countries-list` for full list)
+// Static country list (unchanged)
 const COUNTRIES: Country[] = [
   { value: 'USA', label: 'United States' },
   { value: 'CAN', label: 'Canada' },
@@ -49,7 +51,7 @@ export default function ProfilePage() {
     visibility: 'public',
     location: { city: 'St. Louis', state: 'Missouri', country: 'USA' },
     subscriptionPlan: 'Free',
-    profile: 'Software developer with a passion for AI and open-source projects.', // Added profile initial value
+    profile: 'Software developer with a passion for AI and open-source projects.',
   });
   const [isEditingProfile, setIsEditingProfile] = useState(false);
   const [isEditingAccount, setIsEditingAccount] = useState(false);
@@ -57,6 +59,7 @@ export default function ProfilePage() {
   const [activeTab, setActiveTab] = useState<'profile' | 'account'>('profile');
   const [error, setError] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const router = useRouter(); // Initialize router
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -117,10 +120,35 @@ export default function ProfilePage() {
     alert('Redirect to upgrade page (e.g., /pricing)');
   }, []);
 
+  const handleLocationClick = useCallback(() => {
+    // Navigate to /map with location as query parameters
+    const { city, state, country } = user.location;
+    const query = new URLSearchParams({
+      city: city || '',
+      state: state || '',
+      country: country || '',
+    }).toString();
+    router.push(`/map?${query}`);
+  }, [user.location, router]);
+
   return (
     <div className="min-h-screen bg-[var(--background)] flex items-center justify-center py-12 px-4 mb-20 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white/6 p-8 rounded-sm shadow-lg">
-        <h1 className="text-center text-3xl font-bold text-white">Who I Am</h1>
+        {/* Header and Edit Profile Button */}
+        <div className="flex items-center justify-between">
+          <h1 className="text-3xl font-bold text-white">Who I Am</h1>
+          {!isEditingProfile && activeTab === 'profile' && (
+            <button
+              type="button"
+              onClick={() => setIsEditingProfile(true)}
+              className="ml-4 px-4 py-2 bg-white/6 text-white rounded-md text-sm font-medium hover:bg-white/12 transition-color duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer flex items-center"
+              aria-label="Edit profile"
+            >
+              <PencilIcon className="h-5 w-5 mr-2" />
+              Edit Profile
+            </button>
+          )}
+        </div>
 
         {/* Tabs */}
         <nav className="border-b border-gray-600" aria-label="Settings tabs">
@@ -183,12 +211,18 @@ export default function ProfilePage() {
             </div>
             {!isEditingProfile && (
               <div className="mt-4 text-center">
-                <p className="text-sm text-white">
+                <button
+                  type="button"
+                  onClick={handleLocationClick}
+                  className="inline-flex items-center px-4 py-2 bg-white/6 text-white rounded-md text-sm font-medium hover:bg-white/12 transition-color duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
+                  aria-label="View location on map"
+                >
+                  <MapPinIcon className="h-5 w-5 mr-2" />
                   Location: {user.location.city}
                   {user.location.state && `, ${user.location.state}`}
                   {user.location.country && `, ${user.location.country}`}
-                </p>
-                <p className="text-sm text-white">Bio: {user.profile}</p>
+                </button>
+                <p className="text-sm text-white mt-2">Bio: {user.profile}</p>
               </div>
             )}
             <form onSubmit={handleProfileSubmit} className="mt-8 space-y-6">
@@ -249,13 +283,13 @@ export default function ProfilePage() {
                 />
               </div>
               <div className="flex justify-end space-x-3">
-                {isEditingProfile ? (
+                {isEditingProfile && (
                   <>
                     <button
                       type="button"
                       onClick={handleProfileCancel}
                       className="px-4 py-2 rounded-md text-sm font-medium text-[#c6e1e7] transition-color duration-300 hover:bg-white/6 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
-                      aria-label="Cancel profile changes"
+                      aria-label="Cancel profile expireditIcon changes"
                     >
                       Cancel
                     </button>
@@ -267,22 +301,13 @@ export default function ProfilePage() {
                       Save
                     </button>
                   </>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => setIsEditingProfile(true)}
-                    className="px-4 py-2 bg-white/6 text-white rounded-md text-sm font-medium hover:bg-white/12 transition-color duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer"
-                    aria-label="Edit profile"
-                  >
-                    Edit Profile
-                  </button>
                 )}
               </div>
             </form>
           </div>
         )}
 
-        {/* Account Tab */}
+        {/* Account Tab (unchanged) */}
         {activeTab === 'account' && (
           <form onSubmit={handleAccountSubmit} className="mt-8 space-y-6">
             <div className="space-y-4">
