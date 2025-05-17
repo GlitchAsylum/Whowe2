@@ -127,9 +127,9 @@ export default function ProfilePage() {
     setIsEditingAccount(false);
   }, []);
 
-  const handleUpgradeClick = useCallback(() => {
-    alert('Redirect to upgrade page (e.g., /pricing)');
-  }, []);
+const handleUpgradeClick = useCallback(() => {
+  router.push('/pricing');
+}, [router]);
 
   const handleLocationClick = useCallback(() => {
     const { city, state, country } = user.location;
