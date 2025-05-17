@@ -191,6 +191,14 @@ function Navbar() {
                   >
                     About Us
                   </Link>
+                                    <Link
+                    href="/pricing"
+                    className={`${styles.dropdownItem} block px-4 py-2 text-[#C6E1E7] hover:bg-white/6 hover:text-white focus:ring-2 focus:ring-white/50 transition-all duration-300`}
+                    onClick={closeMenus}
+                    role="menuitem"
+                  >
+                    Pricing
+                  </Link>
                 </div>
               )}
             </div>
