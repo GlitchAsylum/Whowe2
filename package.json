@@ -10,10 +10,14 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@types/leaflet": "^1.9.17",
+    "axios": "^1.9.0",
     "git": "^0.1.5",
+    "leaflet": "^1.9.4",
     "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-leaflet": "^5.0.0",
     "sass": "^1.86.3"
   },
   "devDependencies": {
